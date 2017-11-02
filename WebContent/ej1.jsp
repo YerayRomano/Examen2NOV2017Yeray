@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page
 	import="java.util.HashMap,java.util.Set" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,13 +26,9 @@
 				Set <String> keys = enlaces.keySet();
 	%>
 	<ul>
-	<%
-				for(String key:keys) {
-	%>
-		<li><a href="<%= enlaces.get(key) %>"><%= key %></a></li>
-	<%	
-				}
-	%>
+	<c:forEach var="item" items="${enlaces}">
+		<li><a href="${item.value}"><c:out value="${item.key}"></c:out></a></li>
+	</c:forEach>
 	</ul>
 	<%
 			}
